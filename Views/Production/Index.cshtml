@@ -1,0 +1,37 @@
+﻿@model ProductionPlanner.ViewModels.ProductionPlanViewModel
+
+@{
+    ViewBag.Title = "Production Plan";
+}
+
+<h2>Production Plan</h2>
+
+<form asp-action="Index" method="post">
+    <div>
+        <h3>Original Plan</h3>
+        <p>Monday: <input asp-for="OriginalPlan.Monday" /></p>
+        <p>Tuesday: <input asp-for="OriginalPlan.Tuesday" /></p>
+        <p>Wednesday: <input asp-for="OriginalPlan.Wednesday" /></p>
+        <p>Thursday: <input asp-for="OriginalPlan.Thursday" /></p>
+        <p>Friday: <input asp-for="OriginalPlan.Friday" /></p>
+    </div>
+    
+    <div>
+        <h3>Adjusted Plan</h3>
+        @if (Model?.AdjustedPlan != null)
+        {
+            <p>Monday: @Model.AdjustedPlan.Monday</p>
+            <p>Tuesday: @Model.AdjustedPlan.Tuesday</p>
+            <p>Wednesday: @Model.AdjustedPlan.Wednesday</p>
+            <p>Thursday: @Model.AdjustedPlan.Thursday</p>
+            <p>Friday: @Model.AdjustedPlan.Friday</p>
+        }
+        else
+        {
+            <p>Adjusted Plan is not available.</p>
+        }
+    </div>
+
+    <button type="submit">Adjust Plan</button>
+    
+</form>
